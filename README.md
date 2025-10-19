@@ -1,4 +1,4 @@
-NOTE: you need to compile it first before using downloader
+`NOTE: you need to compile it first before using downloader`
 
 update and install required packages
 ```
@@ -7,7 +7,7 @@ pkg update -y && pkg install curl clang -y
 
 download prootdistro.cpp
 ```
-curl -LO 
+curl -LO https://github.com/rmz3t-dev/proot-termux/blob/main/prootdistro.cpp
 ```
 
 start compiling cpp files
