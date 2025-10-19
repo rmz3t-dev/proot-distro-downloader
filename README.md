@@ -1,9 +1,16 @@
 NOTE: you need to compile it first before using downloader
+
+update and install required packages
 ```
-pkg update -y && pkg install clang -y
+pkg update -y && pkg install curl clang -y
 ```
 
-start compiling
+download prootdistro.cpp
+```
+curl -LO 
+```
+
+start compiling cpp files
 ```
 clang -o prootdistro prootdistro.cpp
 ```
