@@ -17,10 +17,10 @@ clang -o prootdistro prootdistro.cpp
 
 download proot distro rootfs
 ```
-./prootdistro <download_link>
+./prootdistro <alias>
 ```
 
-install downloaded rootfs
+login to proot distro
 ```
-pd install debian
+pd login <alias>
 ```
