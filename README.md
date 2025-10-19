@@ -1,4 +1,4 @@
-`NOTE: you need to compile it first before using downloader`
+**NOTE: you need to compile it first before using downloader**
 
 update and install required packages
 ```
