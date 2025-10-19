@@ -2,32 +2,36 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define PD_DL "/data/data/com.termux/files/usr/var/lib/proot-distro/dlcache/debian-trixie-arm-pd-v4.29.0.tar.xz"
+#define FILE_SOURCE "https://raw.githubusercontent.com/rmz3t-dev/proot-distro-downloader/refs/heads/main/"
+#define PD_DISTROPLUGIN "/data/data/com.termux/files/usr/etc/proot-distro"
 
 int main(int argc, char *argv[]) {
 	if (argc < 2) {
-		printf("\n- Download link is empty!\n\n");
+		printf("\n- Distro alias is empty!\n\n");
 		return 0;
 	}
 	
-	printf("\n- Updating packages...\n\n");
-	system("pkg update -y && pkg install curl -y && pkg install proot-distro -y");
-
-	if (access(PD_DL, F_OK) == 0) {
-		printf("\n- Removing old files...\n\n");
-		remove(PD_DL);
+	char DISTRO_ALIAS[1024];
+	snprintf(DISTRO_ALIAS, sizeof(DISTRO_ALIAS), "%s", argv[1]);
+	char DISTRO_PLUGIN[1024];
+	snprintf(DISTRO_PLUGIN, sizeof(DISTRO_PLUGIN), "%s/%s-plugin.sh", FILE_SOURCE, DISTRO_ALIAS);
+	
+	for (int i = 1; i < argc; i++) {
+		if (strcmp(argv[i], "-r") == 0) {
+			printf("\n- Updating packages...\n\n");
+			system("pkg update -y && pkg install curl -y && pkg install proot-distro -y");
+		}
 	}
 	
-	printf("- Downloading debian from (%s)...\n\n", argv[1]);
+	printf("\n- Downloading distro plugins (%s)...\n\n", DISTRO_PLUGIN);
 	char download[1024];
-	snprintf(download, sizeof(download), "curl -L %s -o %s", argv[1], PD_DL);
+	snprintf(download, sizeof(download), "curl -L %s -o %s/%s.sh", DISTRO_PLUGIN, PD_DISTROPLUGIN, DISTRO_ALIAS);
 	system(download);
 
-	if (access(PD_DL, F_OK) != 0) {
-		printf("\n- Download failed!\n\n");
-		return 0;
-	}
-
-	printf("\n- Download done!\n\n");
+	printf("\n- Installing proot distro rootfs...\n\n");
+	char installs[1024];
+	snprintf(installs, sizeof(installs), "proot-distro install %s", DISTRO_ALIAS);
+	system(installs);
+	
 	return 0;
 }
