@@ -5,7 +5,7 @@ DISTRO_NAME="Debian (bookworm)"
 DISTRO_COMMENT="Previous version (aarch64 & arm only)"
 
 TARBALL_URL['aarch64']="https://github.com/termux/proot-distro/releases/download/v4.17.3/debian-bookworm-aarch64-pd-v4.17.3.tar.xz"
-TARBALL_SHA256['aarch64']=""
+TARBALL_SHA256['aarch64']="3a841a794ae5999b33e33b329582ed0379d4f54ca62c6ce5a8eb9cff5ef8900b"
 TARBALL_URL['arm']="https://github.com/termux/proot-distro/releases/download/v4.17.3/debian-bookworm-arm-pd-v4.17.3.tar.xz"
 TARBALL_SHA256['arm']="85861ab139d4042302796cf46a93a9efbcb4808c06f7a1ae5fb71812f4564424"
 
