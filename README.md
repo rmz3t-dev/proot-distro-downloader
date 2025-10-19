@@ -7,7 +7,7 @@ pkg update -y && pkg install curl clang -y
 
 download prootdistro.cpp
 ```
-curl -LO https://github.com/rmz3t-dev/proot-distro-downloader/blob/main/prootdistro.cpp
+curl -LO https://raw.githubusercontent.com/rmz3t-dev/proot-distro-downloader/refs/heads/main/prootdistro.cpp
 ```
 
 start compiling cpp files
